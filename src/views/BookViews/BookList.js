@@ -3,15 +3,13 @@ import { Link, useRouteMatch } from 'react-router-dom';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 
 export default function BookList (props) {
-
-    const { books } = props
-
     let { path } = useRouteMatch();
+    const { books } = props
 
     const mapBooks = () => {
         return books.map((book) => {
             return (
-                <ListGroupItem tag={Link} to={`${path}/${book.id}`}>
+                <ListGroupItem key={`book_${book.id}`} tag={Link} to={`${path}/${book.id}`}>
                     {book.title}
                 </ListGroupItem>
             )
@@ -20,6 +18,7 @@ export default function BookList (props) {
 
     return (
         <> 
+            <Link to="/">Back</Link>
             <ListGroup>
                 {mapBooks()}  
             </ListGroup>

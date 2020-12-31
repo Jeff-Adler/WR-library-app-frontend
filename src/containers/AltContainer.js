@@ -1,39 +1,39 @@
 import React, {useState,useEffect} from 'react';
 import { Route, Switch, useRouteMatch } from "react-router-dom";
-import AuthorList from '../views/AuthorViews/AuthorList'
-import Author from '../views/AuthorViews/Author'
+// import BookList from '../views/BookViews/BookList'
+import Alt from '../views/BookViews/Alt'
 
-export default function AuthorContainer () {
-    const [authors, setAuthors] = useState()
+export default function BookContainer () {
+    const [alts, setAlts] = useState()
 
     let { path } = useRouteMatch();
 
     useEffect (() => {
-        const retrieveAuthors = () => {
-            return fetch("http://localhost:3000/authors")
+        const retrieveAlts = () => {
+            return fetch("http://localhost:3000/alts")
               .then((response) => response.json())
               .then((data) => {
                 if (data) {
-                  setAuthors(data)
+                  setAlts(data)
                 }
               })
               .catch(err => {
                 alert(err)
               });
           };
-        retrieveAuthors()
+        retrieveAlts()
         // eslint-disable-next-line
     },[])
 
     return (
         <> 
-        { authors ? 
+        { alts ? 
             <Switch>
-                <Route exact path={path}>
-                    <AuthorList authors={authors} />
-                </Route>
-                <Route path={`${path}/:authorId`}>
-                    <Author authors={authors}/>
+                {/* <Route exact path={path}>
+                    <BookList alts={alts} />
+                </Route> */}
+                <Route path={`${path}/:altId`}>
+                    <Alt alts={alts}/>
                 </Route>
             </Switch>
         :

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
-import { ListGroup, ListGroupItem } from 'reactstrap';
+import { ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText } from 'reactstrap';
 
 export default function BookList (props) {
     let { path } = useRouteMatch();
@@ -9,9 +9,25 @@ export default function BookList (props) {
     const mapBooks = () => {
         return books.map((book) => {
             return (
-                <ListGroupItem key={`book_${book.id}`} tag={Link} to={`${path}/${book.id}`}>
-                    {book.title}
+                <ListGroupItem>
+                    <ListGroupItemHeading key={`book_${book.id}`} tag={Link} to={`${path}/${book.id}`}>{book.title}</ListGroupItemHeading>
+                    <br/><br/>
+                    <ListGroupItemText>
+                    <strong>Duplicates: </strong> {mapAlts(book)}
+                    </ListGroupItemText>
                 </ListGroupItem>
+            )
+        })
+    }
+
+    const mapAlts = (book) => {
+        return book.alts.map((alt) => {
+            return (
+                <Link to={`${path}/${book.id}/alts/${alt.id}`}>
+                    <span key={`alt_${alt.id}`}>
+                        {`${alt.title}`}{`\xa0`}{`\xa0`}
+                    </span>
+                </Link>
             )
         })
     }

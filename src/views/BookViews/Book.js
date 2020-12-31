@@ -1,10 +1,9 @@
 import React, {useState} from 'react';
-import { Link, useParams, useHistory, useRouteMatch  } from 'react-router-dom';
+import { Link, useParams, useHistory, withRouter } from 'react-router-dom';
 import {ListGroup, ListGroupItem, Button } from 'reactstrap'
 
-export default function Book(props) {
+function Book(props) {
     let history = useHistory();
-    let { path } = useRouteMatch();
     const [displayReferences, setDisplayReferences] = useState(false)
     const [selectedReference, setSelectedReference] = useState()
     const [isLoading, setIsLoading] = useState(false)
@@ -13,7 +12,7 @@ export default function Book(props) {
     const {books, convertBookToAlt} = props  
     // Finds the book to be shown
     const book = books.find(book => book.id === parseInt(bookId))
-
+console.log("test", book)
     
     const mapAuthors = () => {
         return book.authors.map((author) => {
@@ -100,3 +99,5 @@ export default function Book(props) {
         </>
     )
 }
+
+export default withRouter(Book)

@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useHistory } from 'react-router-dom';
 import {ListGroup, ListGroupItem, Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap'
 
 export default function Alt(props) {
+    let history = useHistory();
     const [modal, setModal] = useState(false);
+    const [isLoading, setIsLoading] = useState(false)
     const toggle = () => setModal(!modal);
 
     let { bookId, altId } = useParams();
@@ -15,28 +17,34 @@ export default function Alt(props) {
 
     const altConvertHandler = () => {
         toggle()
+        setIsLoading(!isLoading)
         convertAltToBook(altId)
     }
         
     return (
         <>
-            { alt ? 
-                <>
-                    <Link to="/books">Back</Link> <br/><br/>
+            { isLoading ? 
+                <div className="loading-screen">
+                    <h3>Loading</h3>
+                </div>
+            :
+                <div className="list-container">
                     <ListGroup>
-                        <ListGroupItem>
+                        <ListGroupItem className="center">
                             <strong>{alt.title}</strong><br/>
                         </ListGroupItem>
                         <ListGroupItem>
                             <strong>Reference: </strong><br/>
                         </ListGroupItem>
-                        <ListGroupItem tag={Link} to={`books/${book.id}`}>
+                        <ListGroupItem tag={Link} onClick={() => history.push(`/books/${book.id}`)}>
                             {book.title}
                         </ListGroupItem>
                     </ListGroup><br/><br/>
-                    <Button onClick={toggle}>
-                        Make reference?
-                    </Button>
+                    <div className="center">
+                        <Button onClick={toggle}>
+                            Make reference?
+                        </Button>
+                    </div>
                     <Modal isOpen={modal} toggle={toggle} className="Modal">
                         <ModalHeader toggle={toggle}>Submit Confirmation</ModalHeader>
                         <ModalBody>{`Are you sure you want to label ${alt.title} as a referece?`}
@@ -46,9 +54,7 @@ export default function Alt(props) {
                             <Button color="secondary" onClick={toggle}>Cancel</Button>
                         </ModalFooter>
                     </Modal>
-                </>
-            :
-                <h3>Loading</h3>
+                </div>
             }
         </>
     )

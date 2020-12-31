@@ -1,8 +1,24 @@
-.App {
+h3 {
   text-align: center;
-  /* background-color: #90ee90; */
 }
 
-body {
-  padding: 100px 0;
+.app {
+  background-color: lightgreen;
+}
+
+.center {
+  text-align: center;
+}
+
+.list-container {
+  box-sizing: border-box;
+  position: relative;
+  padding: 4em 4em 4em;
+  border: 0px solid #d8d8d8;
+  margin: 0 0 0;
+}
+
+.loading-screen {
+  background-color: white;
+  text-align: center;
 }

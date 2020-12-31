@@ -17,10 +17,10 @@ export default function AuthorList (props) {
     }
 
     return (
-        <> 
+        <div className="list-container"> 
             <ListGroup>
                 {mapAuthors()}  
             </ListGroup>
-        </>
+        </div>
     )
 }

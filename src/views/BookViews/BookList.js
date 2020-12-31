@@ -17,10 +17,10 @@ export default function BookList (props) {
     }
 
     return (
-        <> 
+        <div className="list-container"> 
             <ListGroup>
                 {mapBooks()}  
             </ListGroup>
-        </>
+        </div>
     )
 }

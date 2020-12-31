@@ -37,7 +37,9 @@ export default function AuthorContainer () {
                 </Route>
             </Switch>
         :
-            <h3>Loading</h3>
+            <div className="loading-screen">
+                <h3>Loading</h3>
+            </div>
         }
         </>
     )

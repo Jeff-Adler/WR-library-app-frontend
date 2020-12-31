@@ -18,7 +18,6 @@ export default function BookList (props) {
 
     return (
         <> 
-            <Link to="/">Back</Link>
             <ListGroup>
                 {mapBooks()}  
             </ListGroup>

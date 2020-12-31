@@ -18,7 +18,6 @@ export default function AuthorList (props) {
 
     return (
         <> 
-            <Link to="/">Back</Link>
             <ListGroup>
                 {mapAuthors()}  
             </ListGroup>

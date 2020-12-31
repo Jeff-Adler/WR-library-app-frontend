@@ -9,10 +9,10 @@ export default function BookList (props) {
     const mapBooks = () => {
         return books.map((book) => {
             return (
-                <ListGroupItem>
-                    <ListGroupItemHeading key={`book_${book.id}`} tag={Link} to={`${path}/${book.id}`}>{book.title}</ListGroupItemHeading>
+                <ListGroupItem key={`book_${book.id}`}>
+                    <ListGroupItemHeading key={`book_${book.id}_title`} tag={Link} to={`${path}/${book.id}`}>{book.title}</ListGroupItemHeading>
                     <br/><br/>
-                    <ListGroupItemText>
+                    <ListGroupItemText key={`book_${book.id}_duplicates`}>
                     <strong>Duplicates: </strong> {mapAlts(book)}
                     </ListGroupItemText>
                 </ListGroupItem>
@@ -23,8 +23,8 @@ export default function BookList (props) {
     const mapAlts = (book) => {
         return book.alts.map((alt) => {
             return (
-                <Link to={`${path}/${book.id}/alts/${alt.id}`}>
-                    <span key={`alt_${alt.id}`}>
+                <Link key={`alt_${alt.id}`} to={`${path}/${book.id}/alts/${alt.id}`}>
+                    <span>
                         {`${alt.title}`}{`\xa0`}{`\xa0`}
                     </span>
                 </Link>

@@ -9,10 +9,10 @@ export default function AuthorList (props) {
     const mapAuthors = () => {
         return authors.map((author) => {
             return (
-                <ListGroupItem>
-                    <ListGroupItemHeading key={`author_${author.id}`} tag={Link} to={`${path}/${author.id}`}>{`${author.first_name} ${author.last_name}`}</ListGroupItemHeading>
+                <ListGroupItem key={`author_${author.id}`}>
+                    <ListGroupItemHeading key={`author_${author.id}_name`} tag={Link} to={`${path}/${author.id}`}>{`${author.first_name} ${author.last_name}`}</ListGroupItemHeading>
                     <br/><br/>
-                    <ListGroupItemText>
+                    <ListGroupItemText key={`author_${author.id}_books`}>
                     <strong>Books: </strong> {mapBooks(author)}
                     </ListGroupItemText>
                 </ListGroupItem>
@@ -23,8 +23,8 @@ export default function AuthorList (props) {
     const mapBooks = (author) => {
         return author.books.map((book) => {
             return (
-                <Link to={`books/${book.id}`}>
-                    <span key={`book_${book.id}`}>
+                <Link key={`book_${book.id}`} to={`books/${book.id}`}>
+                    <span >
                         {`${book.title}`}{`\xa0`}{`\xa0`}
                     </span>
                 </Link>

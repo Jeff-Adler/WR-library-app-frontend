@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import './App.css';
 import { Route, withRouter, Switch, Redirect, useHistory  } from "react-router-dom";
 import NavBar from './views/NavBar'
-// import BookContainer from './containers/BookContainer'
 import BookList from './views/BookViews/BookList'
 import Book from './views/BookViews/Book'
 import Alt from './views/BookViews/Alt'

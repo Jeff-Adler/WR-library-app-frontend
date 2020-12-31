@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
-import { Link, useParams, useHistory } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import {ListGroup, ListGroupItem, Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap'
 
 export default function Alt(props) {
-    let history = useHistory();
     const [modal, setModal] = useState(false);
     const [isLoading, setIsLoading] = useState(false)
     const toggle = () => setModal(!modal);
@@ -36,7 +35,7 @@ export default function Alt(props) {
                         <ListGroupItem>
                             <strong>Reference: </strong><br/>
                         </ListGroupItem>
-                        <ListGroupItem tag={Link} onClick={() => history.push(`/books/${book.id}`)}>
+                        <ListGroupItem tag={Link} to={`/books/${book.id}`}>
                             {book.title}
                         </ListGroupItem>
                     </ListGroup><br/><br/>

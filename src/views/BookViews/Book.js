@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
-import { Link, useParams, useHistory } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import {ListGroup, ListGroupItem, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 
 export default function Book(props) {
-    let history = useHistory();
     const [displayReferences, setDisplayReferences] = useState(false)
     const [selectedReference, setSelectedReference] = useState()
     const [isLoading, setIsLoading] = useState(false)
@@ -18,7 +17,7 @@ export default function Book(props) {
     const mapAuthors = () => {
         return book.authors.map((author) => {
             return (
-                <ListGroupItem key={`author_${author.id}`} tag={Link} onClick={() => history.push(`/authors/${author.id}`)}>
+                <ListGroupItem key={`author_${author.id}`} tag={Link} to={`/authors/${author.id}`}>
                     {`${author.first_name} ${author.last_name}`}
                 </ListGroupItem>
             )

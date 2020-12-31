@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link, useParams, useHistory } from 'react-router-dom';
-import {ListGroup, ListGroupItem, Button} from 'reactstrap'
+import { Link, useParams } from 'react-router-dom';
+import {ListGroup, ListGroupItem  } from 'reactstrap'
 
 export default function Author(props) {
-    let history = useHistory();
     let { authorId } = useParams();
     const {authors} = props  
     const author = authors.find(author => author.id === parseInt(authorId))
@@ -11,7 +10,7 @@ export default function Author(props) {
     const mapBooks = () => {
         return author.books.map((book) => {
             return (
-                <ListGroupItem key={`book_${book.id}`} tag={Link} onClick={() => history.push(`/books/${book.id}`)}>
+                <ListGroupItem key={`book_${book.id}`} tag={Link} to={`/books/${book.id}`}>
                     {`${book.title}`}
                 </ListGroupItem>
             )
@@ -22,7 +21,6 @@ export default function Author(props) {
         <>
             { author ? 
                 <div className="list-container">
-                    {/* <Link to="/authors">Back</Link> */}
                     <ListGroup>
                         <ListGroupItem className="center">
                             <strong>{`${author.first_name} ${author.last_name}`}</strong><br/>

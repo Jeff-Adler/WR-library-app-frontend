@@ -87,6 +87,7 @@ export default function Book(props) {
                     ? 
                     <div className="center">
                         <select name="cars" id="cars" onChange={e => {setSelectedReference(e.target.value)}}>
+                            <option></option>
                             {mapReferences()}
                         </select><br/><br/>
                         <Button onClick={toggle}>

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
-import { Route, withRouter, Switch, Redirect, useRouteMatch } from "react-router-dom";
+import { Route, withRouter, Switch, Redirect, useHistory  } from "react-router-dom";
 import NavBar from './views/NavBar'
 // import BookContainer from './containers/BookContainer'
 import BookList from './views/BookViews/BookList'
@@ -12,7 +12,8 @@ import AuthorList from './views/AuthorViews/AuthorList'
 import Author from './views/AuthorViews/Author'
 
 function App() {
-  let { path} = useRouteMatch();
+  let history = useHistory();
+
   const [books, setBooks] = useState()
   const [authors, setAuthors] = useState()
 
@@ -63,7 +64,7 @@ function App() {
         if (data) {
             alert("Successfully labeled book as duplicate of reference!")
             setBooks(data);
-            // history.push('/books')
+            history.push('/books')
         }
     } catch (err) {
         alert(err);
@@ -84,7 +85,7 @@ function App() {
           if (data) {
               alert("Successfully labeled duplicate as reference!")
               setBooks(data);
-              // history.push('/books')
+              history.push('/books')
           }
       } catch (err) {
           alert(err);
@@ -104,16 +105,16 @@ function App() {
                 <Route exact path="/books">
                     <BookList books={books} />
                 </Route>
-                <Route exact path={`${path}/:bookId`}>
+                <Route exact path="/books/:bookId">
                     <Book books={books} convertBookToAlt={convertBookToAlt}/>
                 </Route>
-                <Route exact path="books/:bookId/alts/:altId">
+                <Route exact path="/books/:bookId/alts/:altId">
                     <Alt books={books} convertAltToBook={convertAltToBook}/>
                 </Route>
                 <Route exact path="/authors">
                     <AuthorList authors={authors} />
                 </Route>
-                <Route exact path={`${path}/:authorId`}>
+                <Route exact path="/authors/:authorId">
                     <Author authors={authors}/>
                 </Route>
             </Switch>

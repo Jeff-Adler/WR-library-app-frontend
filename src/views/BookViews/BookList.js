@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link, useRouteMatch, withRouter } from 'react-router-dom';
+import { Link, useRouteMatch } from 'react-router-dom';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 
-function BookList (props) {
+export default function BookList (props) {
     let { path } = useRouteMatch();
     const { books } = props
 
@@ -24,5 +24,3 @@ function BookList (props) {
         </div>
     )
 }
-
-export default withRouter(BookList)

@@ -27,7 +27,7 @@ function App() {
 
   const retrieveBooks = async () => {
     try {
-        const response = await fetch("http://localhost:3000/books");
+        const response = await fetch("https://wr-library-app-backend.herokuapp.com/books");
         const data = await response.json();
         if (data) {
           setBooks(data)
@@ -39,7 +39,7 @@ function App() {
 
   const retrieveAuthors = async () => {
     try {
-        const response = await fetch("http://localhost:3000/authors");
+        const response = await fetch("https://wr-library-app-backend.herokuapp.com/authors");
         const data = await response.json();
         if (data) {
           setAuthors(data)
@@ -58,7 +58,7 @@ function App() {
         }
       };
     try {
-        const response = await fetch(`http://localhost:3000/books/${bookId}/convert_to_alt/${referenceBookId}`, configObj);
+        const response = await fetch(`https://wr-library-app-backend.herokuapp.com/books/${bookId}/convert_to_alt/${referenceBookId}`, configObj);
         const data = await response.json();
         if (data) {
             alert("Successfully labeled book as duplicate of reference!")
@@ -79,7 +79,7 @@ function App() {
           }
         };
       try {
-          const response = await fetch(`http://localhost:3000/alts/${altId}/convert_to_book`, configObj);
+          const response = await fetch(`https://wr-library-app-backend.herokuapp.com/alts/${altId}/convert_to_book`, configObj);
           const data = await response.json();
           if (data) {
               alert("Successfully labeled duplicate as reference!")

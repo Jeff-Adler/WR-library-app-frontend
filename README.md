@@ -2,6 +2,10 @@
 
 Library app to search and organize books by title and author
 
+## Live app:
+
+[Live App](https://wr-library-app.herokuapp.com/books)
+
 ## Description
 
 User should...

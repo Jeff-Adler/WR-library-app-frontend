@@ -39,7 +39,7 @@ export default function BookList (props) {
 
     return (
         <div className="list-container"> 
-            <input name="books filter" className="filter" id="books-filter" placeholder="filter books" value={filter} onChange={(e) => setFilter(e.target.value)}/>
+            <input name="books-filter" className="filter" id="books-filter" placeholder="Filter Books" value={filter} onChange={(e) => setFilter(e.target.value)}/>
             <br/><br/>
             <ListGroup>
                 {mapBooks()}  
